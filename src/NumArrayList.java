@@ -1,27 +1,48 @@
 public class NumArrayList implements NumList {
-    
+    /* internalArray is for storing the values in the NumArrayList */
+    private double[] internalArray = null;
+    private int size = 0;
+
     /**
-     * 
+     * Creates a new NumArrayList with a capacity of 0
      */
     public NumArrayList() {
-
+        this.internalArray = new double[0];
+        this.size = 0;
     }
 
     /**
-     * 
+     * Creates a new NumArrayList with the specified capacity
      * @param capacity
      */
     public NumArrayList(int capacity) {
-
+        this.internalArray = new double[capacity];
+        this.size = 0;
     }
     
+    /**
+     * Getter method for the internalArray
+     * @return the internalArray
+     */
+    private double[] getInternalArray() {
+        return this.internalArray;
+    }
+
+    /**
+     * Setter method for the internalArray
+     * @param internalArray the new array to set as the internal array
+     */
+    private void setInternalArray(double[] internalArray) {
+        this.internalArray = internalArray;
+    }
+
     /**
      * Getter method for the size of the array
      * The size is the number of numbers currently in the array
      * @return the size of the array
      */
     public int size() {
-        return 0;
+        return this.size;
     }
 
     /**
@@ -30,7 +51,7 @@ public class NumArrayList implements NumList {
      * @return the capacity of the array
      */
     public int capacity() {
-        return 0;
+        return getInternalArray().length;
     }
 
     /**
@@ -39,7 +60,7 @@ public class NumArrayList implements NumList {
      * @param value the number to be added to the end of the array
      */
     public void add(double value) {
-
+        size++;
     }
 
     /**
@@ -79,7 +100,11 @@ public class NumArrayList implements NumList {
      * @throws IndexOutOfBoundsException when the input index is greater than or equal to the size of the array
      */
     public double lookup(int i) throws IndexOutOfBoundsException {
-        return 0.0;
+        if (i >= size()) {
+            throw new IndexOutOfBoundsException();
+        }
+        
+        return getInternalArray()[i];
     }
 
     /**
@@ -89,6 +114,18 @@ public class NumArrayList implements NumList {
      * @return true if the two are equal, false otherwise
      */
     public boolean equals(NumList otherList) {
+        return false;
+    }
+
+    /**
+     * Overrides the equals method inherited from Object
+     * Checks whether this NumArrayList is identical to another NumArrayList
+     * Two NumArrayLists are equal if they have all the same numbers in the same order
+     * @param otherNumArrayList the other NumArrayList to compare this NumArrayList to
+     * @return true is the two are equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object otherNumArrayList) {
         return false;
     }
 
