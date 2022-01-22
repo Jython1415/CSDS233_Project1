@@ -3,6 +3,17 @@ import org.junit.Test;
 
 public class NumArrayListTester {
     /**
+     * Creates a NumArrayList with the specified double values
+     */
+    private static NumArrayList createArrayList(double... values) {
+        NumArrayList list = new NumArrayList();
+        for (double value : values)
+            list.add(value);
+
+        return list;
+    }
+
+    /**
      * Unit tests for the NumArrayList constructors
      */
     @Test
