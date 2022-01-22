@@ -4,6 +4,7 @@ import org.junit.Test;
 public class NumArrayListTester {
     /**
      * Creates a NumArrayList with the specified double values
+     * Uses the empty constructor and the add method
      */
     private static NumArrayList createArrayList(double... values) {
         NumArrayList list = new NumArrayList();
@@ -42,7 +43,7 @@ public class NumArrayListTester {
      */
     @Test
     public void testAdd() {
-
+        
     }
 
     /**
