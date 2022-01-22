@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class NumArrayListTester {
     /**
-     * 
+     * Unit tests for the NumArrayList constructors
      */
     @Test
     public void testNumArrayList() {
@@ -11,7 +11,7 @@ public class NumArrayListTester {
     }
     
     /**
-     * 
+     * Unit tests for the size method
      */
     @Test
     public void testSize() {
@@ -19,7 +19,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the capacity method
      */
     @Test
     public void testCapacity() {
@@ -27,7 +27,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the add method
      */
     @Test
     public void testAdd() {
@@ -35,7 +35,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the insert method
      */
     @Test
     public  void testInsert() {
@@ -43,7 +43,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the remove method
      */
     @Test
     public  void testRemove() {
@@ -51,7 +51,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the contains method
      */
     @Test
     public void testContains() {
@@ -59,7 +59,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the lookup method
      */
     @Test
     public void testLookup() {
@@ -67,7 +67,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the equals method
      */
     @Test
     public void testEquals() {
@@ -75,7 +75,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the remove duplicates method
      */
     @Test
     public void testRemoveDuplicates() {
@@ -83,7 +83,7 @@ public class NumArrayListTester {
     }
 
     /**
-     * 
+     * Unit tests for the toString method
      */
     @Test
     public void testToString() {
