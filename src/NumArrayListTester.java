@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.lang.NoSuchFieldException;
 
 public class NumArrayListTester {
     /**
@@ -12,6 +13,24 @@ public class NumArrayListTester {
             list.add(value);
 
         return list;
+    }
+
+    /**
+     * Compares two NumArrayLists and asserts that they are equal using org.junit.Assert
+     * The method uses reflection to access the private field storing the internal array, and compares those directly
+     * @param message the String message to report when the lists are not equal
+     * @param list1 the first list to be compared
+     * @param list2 the second list to be compared
+     */
+    private static void assertNumArrayListEquals(String message, NumArrayList list1, NumArrayList list2) {
+        try {
+            Assert.assertTrue(message,
+                          list1.getClass().getField("internalArray").equals(
+                          list2.getClass().getField("internalArray")));
+        }
+        catch (NoSuchFieldException e) {
+            Assert.fail("There was an unexpected exception thrown by the unit test");
+        }
     }
 
     /**
