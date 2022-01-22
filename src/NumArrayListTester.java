@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import java.lang.NoSuchFieldException;
+import java.lang.reflect.InvocationTargetException;
 
 public class NumArrayListTester {
     /**
@@ -16,22 +17,43 @@ public class NumArrayListTester {
     }
 
     /**
+     * Compares a NumListArray to an array and returns true if they are the same, false otherwise
+     * Accounts for the size problem
+     * @param list1 the NumListArray to compare to array
+     * @param array the array to compare list1 to
+     * @return true is array is identical to list1 up to list1's size
+     * @throws IllegalAccessException passes along exception from reflection
+     * @throws InvocationTargetException passes along exception from reflection
+     * @throws NoSuchMethodException passes along exception from reflection
+     */
+    private static boolean compareNumArrayListToArray(NumArrayList list1, double[] array) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        double[] arrayList = (double[])(list1.getClass().getMethod("getInternalArray", null).invoke(list1, null));
+        for (int i = 0; i < list1.size(); i++) {
+            if (arrayList[i] != array[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Compares two NumArrayLists and asserts that they are equal using org.junit.Assert
      * The method uses reflection to access the private field storing the internal array, and compares those directly
      * @param message the String message to report when the lists are not equal
      * @param list1 the first list to be compared
      * @param list2 the second list to be compared
      */
-    private static void assertNumArrayListEquals(String message, NumArrayList list1, NumArrayList list2) {
-        try {
-            Assert.assertTrue(message,
-                          list1.getClass().getField("internalArray").equals(
-                          list2.getClass().getField("internalArray")));
-        }
-        catch (NoSuchFieldException e) {
-            Assert.fail("There was an unexpected exception thrown by the unit test");
-        }
-    }
+    // private static void assertNumArrayListEquals(String message, NumArrayList list1, NumArrayList list2) {
+    //     try {
+    //         Assert.assertTrue(message,
+    //                       list1.getClass().getMethod("getInternalArray", null).invoke(list1, null).equals(
+    //                       list2.getClass().getMethod("getInternalArray", null).invoke(list1, null)));
+    //     }
+    //     catch (Exception e) {
+    //         Assert.fail("There was an unexpected exception thrown by the unit test");
+    //     }
+    // }
 
     /**
      * Compares a NumArrayList to an array and asserts that they are equal using org.junit.Assert
@@ -42,11 +64,9 @@ public class NumArrayListTester {
      */
     private static void assertNumArrayListEquals(String message, NumArrayList list1, double[] array) {
         try {
-            Assert.assertTrue(message,
-                          list1.getClass().getField("internalArray").equals(
-                          array));
+            Assert.assertTrue(message, NumArrayListTester.compareNumArrayListToArray(list1, array));
         }
-        catch (NoSuchFieldException e) {
+        catch (Exception e) {
             Assert.fail("There was an unexpected exception thrown by the unit test");
         }
     }
