@@ -103,15 +103,21 @@ public class NumArrayListTester {
         // 0 elements
         NumArrayList list1 = new NumArrayList();
         assertNumArrayListEquals("list1 was not empty when it should have been", list1, new double[] {});
+        Assert.assertTrue("list1 size should have been 0 but it was not", list1.size() == 0);
+        Assert.assertTrue("list1 capacity should have been 0 but it was not", list1.capacity() == 0);
 
         // 1 element
         list1.add(1.0);
         assertNumArrayListEquals("list1 did not have the correct element", list1, new double[] {1.0});
+        Assert.assertTrue("list1 size should have been 1 but it was not", list1.size() == 1);
+        Assert.assertTrue("list1 capacity should have been 1 but it was not", list1.capacity() == 1);
 
         // 3 elements
         list1.add(2.0);
         list1.add(3.0);
         assertNumArrayListEquals("list1 did not have the correct elements", list1, new double[] {1.0, 2.0, 3.0});
+        Assert.assertTrue("list1 size should have been 3 but it was not", list1.size() == 3);
+        Assert.assertTrue("list1 capacity should have been 4 but it was not", list1.capacity() == 4);
     }
 
     /**
