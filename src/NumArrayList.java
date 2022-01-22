@@ -1,28 +1,112 @@
 public class NumArrayList implements NumList {
     
-    public static boolean run() {
-        return true;
+    /**
+     * 
+     */
+    public NumArrayList() {
+
     }
 
-    public double lookup(int i) {
+    /**
+     * 
+     * @param capacity
+     */
+    public NumArrayList(int capacity) {
+
+    }
+    
+    /**
+     * Getter method for the size of the list
+     * The size is the number of numbers currently in the list
+     * @return the size of the list
+     */
+    public int size() {
+        return 0;
+    }
+
+    /**
+     * Getter method for the capacity of the list
+     * The capacity is the number of numbers the list can hold without resizing
+     * @return the capacity of the list
+     */
+    public int capacity() {
+        return 0;
+    }
+
+    /**
+     * Adds a number of the end of the list
+     * The method expands the capacity if needed
+     * @param value the number to be added to the end of the list
+     */
+    public void add(double value) {
+
+    }
+
+    /**
+     * Adds a number at a specified position of the list
+     * All numbers after (and the number at) the specified position are shifted down the list
+     * If the list has i or fewer numbers, then the value is added in the same fashion as the add method
+     * @param i the index to insert the new value at
+     * @param value the value to add to the list
+     */
+    public  void insert(int i, double value) {
+
+    }
+
+    /**
+     * Removes the number at the specified position of the list
+     * All numbers after the specified position are shifted up the list
+     * The size of the list is shortened by this method if there is a number at the specified position
+     * @param i the index where the value should be removed
+     */
+    public  void remove(int i) {
+
+    }
+
+    /**
+     * Checks whether the list contains the input value
+     * @param value the value is what the method is confirming is in the list
+     * @return true if the value is in the list, false otherwise
+     */
+    public boolean contains(double value) {
+        return false;
+    }
+
+    /**
+     * Returns the i-th element of the list
+     * @param i the index of the list to get the value from
+     * @return the value stored at the specified index
+     * @throws IndexOutOfBoundsException when the input index is greater than or equal to the size of the list
+     */
+    public double lookup(int i) throws IndexOutOfBoundsException {
         return 0.0;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof NumArrayList) {
-            NumArrayList l = (NumArrayList)o
-            for (int i = 0; i < this.size(); i++) {
-                if (i == l.size())
-                    return false;
-                if (this.lookup(i) != l.lookup(i))
-                    return false;
-            }
+    /**
+     * Checks whether this list is equal to the input list
+     * Two lists are equal if they have all the same numbers in the same order
+     * @param otherList the other list to compare this list to
+     * @return true if the two are equal, false otherwise
+     */
+    public boolean equals(NumList otherList) {
+        return false;
+    }
 
-            return true;
-        }
-        else
-            return false;
+    /**
+     * Removes duplicates in this list while preserving the current order of the numbers
+     */
+    public void removeDuplicates() {
+
+    }
+
+    /**
+     * Provides a String representation of this list
+     * For an empty list, an empty String is returned
+     * Numbers are separated by a space and no other characters are included
+     * @return a String representation of the list
+     */
+    public String toString() {
+        return null;
     }
 
     public static void main(String[] args) throws Exception {

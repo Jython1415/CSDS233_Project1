@@ -30,7 +30,8 @@ public interface NumList {
      * Adds a number at a specified position of the list
      * All numbers after (and the number at) the specified position are shifted down the list
      * If the list has i or fewer numbers, then the value is added in the same fashion as the add method
-     * @param value
+     * @param i the index to insert the new value at
+     * @param value the value to add to the list
      */
     public abstract void insert(int i, double value);
 
@@ -38,7 +39,7 @@ public interface NumList {
      * Removes the number at the specified position of the list
      * All numbers after the specified position are shifted up the list
      * The size of the list is shortened by this method if there is a number at the specified position
-     * @param i
+     * @param i the index where the value should be removed
      */
     public abstract void remove(int i);
 
