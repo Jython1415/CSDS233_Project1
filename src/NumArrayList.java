@@ -24,7 +24,7 @@ public class NumArrayList implements NumList {
      * Getter method for the internalArray
      * @return the internalArray
      */
-    private double[] getInternalArray() {
+    public double[] getInternalArray() {
         return this.internalArray;
     }
 
@@ -60,7 +60,12 @@ public class NumArrayList implements NumList {
      * @param value the number to be added to the end of the array
      */
     public void add(double value) {
-        size++;
+        if (size() == capacity()) {
+            increaseCapacity();
+        }
+        
+        getInternalArray()[size()] = value;
+        this.size++;
     }
 
     /**
@@ -144,6 +149,29 @@ public class NumArrayList implements NumList {
      */
     public String toString() {
         return "";
+    }
+
+    /**
+     * Copies the contents of one array onto another array and returns the new array
+     * @param emptyArray the array the values are copied onto. This is the array that is returned by the method
+     * @param originalArray the array the values are copied from
+     * @return the array the values were copied onto
+     */
+    private static double[] copyArray(double[] emptyArray, double[] originalArray) {
+        for (int i = 0; i < originalArray.length; i++)
+            emptyArray[i] = originalArray[i];
+        
+        return emptyArray;
+    }
+
+    /**
+     * Increases the capacity of the NumArrayList
+     * Doubles the capacity
+     */
+    private void increaseCapacity() {
+        double[] tempArray = new double[Math.max(1, getInternalArray().length * 2)];
+        NumArrayList.copyArray(tempArray, getInternalArray());
+        setInternalArray(tempArray);
     }
 
     public static void main(String[] args) throws Exception {
