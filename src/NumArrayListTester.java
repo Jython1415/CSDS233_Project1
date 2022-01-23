@@ -193,7 +193,40 @@ public class NumArrayListTester {
      */
     @Test
     public void testRemove() {
+        // test on an empty list
+        NumArrayList list1 = new NumArrayList();
+        list1.remove(0);
+        Assert.assertTrue("The capacity of the list should be 0", list1.capacity() == 0);
+        Assert.assertTrue("The size of the list should be 0", list1.size() == 0);
 
+        // test on a list with one element with an index of 0
+        list1.add(0.0);
+        list1.remove(0);
+        Assert.assertTrue("The capacity of the list should be 1", list1.capacity() == 1);
+        Assert.assertTrue("The size of the list should be 0", list1.size() == 0);
+
+        // test on a list with one element with an index of 1
+        list1.add(0.0);
+        list1.remove(1);
+        Assert.assertTrue("The capacity of the list should be 1", list1.capacity() == 1);
+        Assert.assertTrue("The size of the list should be 1", list1.size() == 1);
+        Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
+
+        // test on a list with multiple elements with an index of 0
+        list1 = NumArrayListTester.createArrayList(-1.0, 0.0, 1.0, 2.0);
+        list1.remove(0);
+        Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
+        Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
+        Assert.assertTrue("The 3nd element in the list should be 2.0", list1.lookup(2) == 2.0);
+
+        // test on a list with multiple element with an index greater than the size
+        list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
+        list1.remove(5);
+        Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
+        Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
+        Assert.assertTrue("The 3nd element in the list should be 2.0", list1.lookup(2) == 2.0);
+        Assert.assertTrue("The 4nd element in the list should be 3.0", list1.lookup(3) == 3.0);
+        Assert.assertTrue("The 5nd element in the list should be 4.0", list1.lookup(4) == 4.0);
     }
 
     /**
