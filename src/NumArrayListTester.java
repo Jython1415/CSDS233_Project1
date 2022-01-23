@@ -76,7 +76,20 @@ public class NumArrayListTester {
      */
     @Test
     public void testNumArrayList() {
+        // constructor with no parameters
+        NumArrayList list1 = new NumArrayList();
+        Assert.assertTrue("list1 size should have been 0 but it was not", list1.size() == 0);
+        Assert.assertTrue("list1 capacity should have been 0 but it was not", list1.capacity() == 0);
 
+        // constructor with capacity of 0
+        NumArrayList list2 = new NumArrayList(0);
+        Assert.assertTrue("list2 size should have been 0 but it was not", list2.size() == 0);
+        Assert.assertTrue("list2 capacity should have been 0 but it was not", list2.capacity() == 0);
+
+        // constructor with capacity of 3
+        NumArrayList list3 = new NumArrayList(3);
+        Assert.assertTrue("list3 size should have been 0 but it was not", list3.size() == 0);
+        Assert.assertTrue("list3 capacity should have been 3 but it was not", list3.capacity() == 3);
     }
     
     /**
@@ -84,7 +97,18 @@ public class NumArrayListTester {
      */
     @Test
     public void testSize() {
+        // size 0
+        NumArrayList list1 = new NumArrayList();
+        Assert.assertTrue("list1 size should have been 0 but it was not", list1.size() == 0);
 
+        // size 1
+        list1.add(1);
+        Assert.assertTrue("list1 size should have been 1 but it was not", list1.size() == 1);
+
+        // size 3
+        list1.add(1);
+        list1.add(1);
+        Assert.assertTrue("list1 size should have been 3 but it was not", list1.size() == 3);
     }
 
     /**
@@ -92,7 +116,18 @@ public class NumArrayListTester {
      */
     @Test
     public void testCapacity() {
+        // capacity 0
+        NumArrayList list1 = new NumArrayList();
+        Assert.assertTrue("list1 capacity should have been 0 but it was not", list1.capacity() == 0);
 
+        // capacity 1
+        list1.add(1);
+        Assert.assertTrue("list1 capacity should have been 1 but it was not", list1.capacity() == 1);
+
+        // capacity 4
+        list1.add(1);
+        list1.add(1);
+        Assert.assertTrue("list1 capacity should have been 4 but it was not", list1.capacity() == 4);
     }
 
     /**
@@ -124,7 +159,7 @@ public class NumArrayListTester {
      * Unit tests for the insert method
      */
     @Test
-    public  void testInsert() {
+    public void testInsert() {
 
     }
 
@@ -132,7 +167,7 @@ public class NumArrayListTester {
      * Unit tests for the remove method
      */
     @Test
-    public  void testRemove() {
+    public void testRemove() {
 
     }
 
@@ -149,7 +184,53 @@ public class NumArrayListTester {
      */
     @Test
     public void testLookup() {
+        // test on a list with no capacity
+        NumArrayList list1 = new NumArrayList();
+        try {
+            list1.lookup(0);
+            Assert.fail("The method should have thrown an exception but it did not");
+        }
+        catch (IndexOutOfBoundsException e) {
+        }
+        catch (Exception e) {
+            Assert.fail("The method threw the wrong exception: " + e.toString());
+        }
 
+        // test on a list with capacity but size of 0 (empty)
+        list1 = new NumArrayList(1);
+        try {
+            list1.lookup(0);
+            Assert.fail("The method should have thrown an exception but it did not");
+        }
+        catch (IndexOutOfBoundsException e) {
+        }
+        catch (Exception e) {
+            Assert.fail("The method threw the wrong exception: " + e.toString());
+        }
+
+        // tests on a list with values
+        list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
+        try {
+            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(0) == 0.0);
+            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(1) == 1.0);
+            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(2) == 2.0);
+            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(3) == 3.0);
+            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(4) == 4.0);
+        }
+        catch (Exception e) {
+            Assert.fail("The method threw an exception when it should not have: " + e.toString());
+        }
+
+        // test where the index is beyond the size of the list
+        try {
+            list1.lookup(5);
+            Assert.fail("The method should have thrown an exception but it did not");
+        }
+        catch (IndexOutOfBoundsException e) {
+        }
+        catch (Exception e) {
+            Assert.fail("The method threw the wrong exception: " + e.toString());
+        }
     }
 
     /**
@@ -157,7 +238,43 @@ public class NumArrayListTester {
      */
     @Test
     public void testEquals() {
+        // two empty lists of the same or different capacities should be equal
+        // the first test also checks communicativeness
+        NumArrayList list1 = new NumArrayList();
+        NumArrayList list2 = new NumArrayList();
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list2.equals(list1));
+        // a list should also equal itself
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list1));
+        // different capacities
+        list2 = new NumArrayList(1);
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
 
+        // two lists with the same value with same or different capacities should be equal
+        // different capacities
+        list1 = NumArrayListTester.createArrayList(1.0);
+        list2 = new NumArrayList(2);
+        list2.add(1.0);
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
+        // same capacity
+        list2 = NumArrayListTester.createArrayList(1.0);
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
+
+        // two lists with the same values with the same or different capacities should be equal
+        // different capacities
+        list1 = NumArrayListTester.createArrayList(1.0, 2.0);
+        list2 = new NumArrayList(4);
+        list2.add(1.0);
+        list2.add(2.0);
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
+        // same capacity
+        list2 = NumArrayListTester.createArrayList(1.0, 2.0);
+        Assert.assertTrue("The method should have returned true for the two lists, but it did not", list1.equals(list2));
+
+        // two lists with values that are not in the exact same order should not be equal
+        list1 = NumArrayListTester.createArrayList(1.0, 2.0, 3.0);
+        list2 = NumArrayListTester.createArrayList(1.0, 3.0, 2.0);
+        Assert.assertFalse("The method should have returned false for the two lists, but it did not", list1.equals(list2));
     }
 
     /**
