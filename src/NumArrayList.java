@@ -119,7 +119,18 @@ public class NumArrayList implements NumList {
      * @return true if the two are equal, false otherwise
      */
     public boolean equals(NumList otherList) {
-        return false;
+        if (this.size() != otherList.size()) {
+            return false;
+        }
+        else {
+            for (int i = 0; i < this.size(); i++) {
+                if (this.lookup(i) != otherList.lookup(i)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
     /**
