@@ -75,7 +75,7 @@ public class NumArrayList implements NumList {
      * @param i the index to insert the new value at
      * @param value the value to add to the array
      */
-    public  void insert(int i, double value) {
+    public void insert(int i, double value) {
 
     }
 
@@ -85,7 +85,7 @@ public class NumArrayList implements NumList {
      * The size of the array is shortened by this method if there is a number at the specified position
      * @param i the index where the value should be removed
      */
-    public  void remove(int i) {
+    public void remove(int i) {
 
     }
 
