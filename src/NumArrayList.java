@@ -24,7 +24,7 @@ public class NumArrayList implements NumList {
      * Getter method for the internalArray
      * @return the internalArray
      */
-    public double[] getInternalArray() {
+    private double[] getInternalArray() {
         return this.internalArray;
     }
 
