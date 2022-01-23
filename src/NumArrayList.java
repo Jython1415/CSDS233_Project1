@@ -140,10 +140,10 @@ public class NumArrayList implements NumList {
      * @param otherNumArrayList the other NumArrayList to compare this NumArrayList to
      * @return true is the two are equal, false otherwise
      */
-    @Override
+    /*@Override
     public boolean equals(Object otherNumArrayList) {
         return false;
-    }
+    }*/
 
     /**
      * Removes duplicates in this array while preserving the current order of the numbers
