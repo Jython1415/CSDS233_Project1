@@ -183,9 +183,9 @@ public class NumArrayListTester {
         list1.insert(1, 1.0);
         Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
         Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
-        Assert.assertTrue("The 3nd element in the list should be 2.0", list1.lookup(2) == 2.0);
-        Assert.assertTrue("The 4nd element in the list should be 3.0", list1.lookup(3) == 3.0);
-        Assert.assertTrue("The 5nd element in the list should be 4.0", list1.lookup(4) == 4.0);
+        Assert.assertTrue("The 3rd element in the list should be 2.0", list1.lookup(2) == 2.0);
+        Assert.assertTrue("The 4th element in the list should be 3.0", list1.lookup(3) == 3.0);
+        Assert.assertTrue("The 5th element in the list should be 4.0", list1.lookup(4) == 4.0);
     }
 
     /**
@@ -217,16 +217,16 @@ public class NumArrayListTester {
         list1.remove(0);
         Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
         Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
-        Assert.assertTrue("The 3nd element in the list should be 2.0", list1.lookup(2) == 2.0);
+        Assert.assertTrue("The 3rd element in the list should be 2.0", list1.lookup(2) == 2.0);
 
         // test on a list with multiple element with an index greater than the size
         list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
         list1.remove(5);
         Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
         Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
-        Assert.assertTrue("The 3nd element in the list should be 2.0", list1.lookup(2) == 2.0);
-        Assert.assertTrue("The 4nd element in the list should be 3.0", list1.lookup(3) == 3.0);
-        Assert.assertTrue("The 5nd element in the list should be 4.0", list1.lookup(4) == 4.0);
+        Assert.assertTrue("The 3rd element in the list should be 2.0", list1.lookup(2) == 2.0);
+        Assert.assertTrue("The 4th element in the list should be 3.0", list1.lookup(3) == 3.0);
+        Assert.assertTrue("The 5th element in the list should be 4.0", list1.lookup(4) == 4.0);
     }
 
     /**
@@ -234,7 +234,28 @@ public class NumArrayListTester {
      */
     @Test
     public void testContains() {
+        // test on an empty list
+        NumArrayList list1 = new NumArrayList();
+        Assert.assertFalse("The method should return false on an empty list", list1.contains(0.0));
 
+        // test on a list with one value that is the correct value
+        list1.add(0.0);
+        Assert.assertTrue("The method should return true when the list contains the value", list1.contains(0.0));
+
+        // test on a list with one value that is not the value in a parameter
+        Assert.assertFalse("The method should return false when the list does not contain the value", list1.contains(1.0));
+
+        // test on a list with multiple values with one match
+        list1.add(1.0);
+        list1.add(2.0);
+        Assert.assertTrue("The method should return true when the list contains the value", list1.contains(1.0));
+
+        // test on a list with multiple values with multiple matches
+        list1 = NumArrayListTester.createArrayList(0.0, 0.0, 0.0);
+        Assert.assertTrue("The method should return true when the list contains the value", list1.contains(0.0));
+
+        // test on a list with multiple values with no matches
+        Assert.assertFalse("The method should return false when the list does not contain the value", list1.contains(1.0));
     }
 
     /**
@@ -269,11 +290,12 @@ public class NumArrayListTester {
         // tests on a list with values
         list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
         try {
-            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(0) == 0.0);
-            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(1) == 1.0);
-            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(2) == 2.0);
-            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(3) == 3.0);
-            Assert.assertTrue("The method returned a value from the wrong index of the list", list1.lookup(4) == 4.0);
+            String message = "The method returned a value from the wrong index of the list";
+            Assert.assertTrue(message, list1.lookup(0) == 0.0);
+            Assert.assertTrue(message, list1.lookup(1) == 1.0);
+            Assert.assertTrue(message, list1.lookup(2) == 2.0);
+            Assert.assertTrue(message, list1.lookup(3) == 3.0);
+            Assert.assertTrue(message, list1.lookup(4) == 4.0);
         }
         catch (Exception e) {
             Assert.fail("The method threw an exception when it should not have: " + e.toString());
