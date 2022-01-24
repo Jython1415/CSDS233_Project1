@@ -371,6 +371,5 @@ public class NumArrayListTester {
     @Test
     public void testToString() {
 
-
     }
 }
