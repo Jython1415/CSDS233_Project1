@@ -364,22 +364,23 @@ public class NumArrayListTester {
                                                     list1, new double[]{0.0, 1.0, 2.0, 3.0, 4.0});
 
         /* a list with multiple duplicates at various locations */
+        String message = "The method did not remove the duplicates correctly";
         // a list with adjacent duplicates
         list1 = NumArrayListTester.createArrayList(0.0, 0.0, 1.0, 1.0, 2.0);
         list1.removeDuplicates();
-        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+        NumArrayListTester.assertNumArrayListEquals(message,
                                                     list1, new double[]{0.0, 1.0, 2.0});
 
         // a list with duplicates at the ends
         list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 1.0, 0.0);
         list1.removeDuplicates();
-        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+        NumArrayListTester.assertNumArrayListEquals(message,
                                                     list1, new double[]{0.0, 1.0, 2.0});
 
         // a list with elements that are all the same value
         list1 = NumArrayListTester.createArrayList(0.0, 0.0, 0.0, 0.0, 0.0);
         list1.removeDuplicates();
-        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+        NumArrayListTester.assertNumArrayListEquals(message,
                                                     list1, new double[]{0.0});
     }
 
