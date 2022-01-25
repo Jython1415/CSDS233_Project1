@@ -76,7 +76,21 @@ public class NumArrayList implements NumList {
      * @param value the value to add to the array
      */
     public void insert(int i, double value) {
+        if (size () == capacity()) {
+            this.increaseCapacity();
+        }
+        
+        if (i >= size()) {
+            this.add(value);
+        }
+        else {
+            for (int j = size(); j > i; j--) {
+                getInternalArray()[j] = getInternalArray()[j - 1];
+            }
 
+            getInternalArray()[i] = value;
+            size++;
+        }
     }
 
     /**
@@ -147,7 +161,15 @@ public class NumArrayList implements NumList {
      * @return a String representation of the array
      */
     public String toString() {
-        return "";
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < size() - 1; i++) {
+            result.append(this.lookup(i)).append(" ");
+        }
+
+        result.append(this.lookup(size() - 1));
+
+        return result.toString();
     }
 
     /**
