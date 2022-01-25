@@ -134,18 +134,6 @@ public class NumArrayList implements NumList {
     }
 
     /**
-     * Overrides the equals method inherited from Object
-     * Checks whether this NumArrayList is identical to another NumArrayList
-     * Two NumArrayLists are equal if they have all the same numbers in the same order
-     * @param otherNumArrayList the other NumArrayList to compare this NumArrayList to
-     * @return true is the two are equal, false otherwise
-     */
-    /*@Override
-    public boolean equals(Object otherNumArrayList) {
-        return false;
-    }*/
-
-    /**
      * Removes duplicates in this array while preserving the current order of the numbers
      */
     public void removeDuplicates() {
