@@ -179,7 +179,9 @@ public class NumArrayList implements NumList {
             result.append(this.lookup(i)).append(" ");
         }
 
-        result.append(this.lookup(size() - 1));
+        if (size() != 0) {
+            result.append(this.lookup(size() - 1));
+        }
 
         return result.toString();
     }
