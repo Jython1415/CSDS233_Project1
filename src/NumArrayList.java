@@ -100,7 +100,13 @@ public class NumArrayList implements NumList {
      * @param i the index where the value should be removed
      */
     public void remove(int i) {
+        if (i < size()) {
+            for (int j = i; j < size() - 1; j++) {
+                getInternalArray()[j] = getInternalArray()[j + 1];
+            }
 
+            size--;
+        }
     }
 
     /**
