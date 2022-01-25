@@ -115,6 +115,12 @@ public class NumArrayList implements NumList {
      * @return true if the value is in the array, false otherwise
      */
     public boolean contains(double value) {
+        for (double element : getInternalArray()) {
+            if (element == value) {
+                return true;
+            }
+        }
+
         return false;
     }
 
