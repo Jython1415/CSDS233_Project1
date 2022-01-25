@@ -149,10 +149,7 @@ public class NumArrayListTester {
 
         // test when the new value displaces the one element in the list
         list1 = NumArrayListTester.createArrayList(1.0);
-        list1.insert(0, 0.0);
-
-        System.out.println(list1.toString());
-        
+        list1.insert(0, 0.0);        
         Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
         Assert.assertTrue("The 2nd element in the list should be 1.0", list1.lookup(1) == 1.0);
 
