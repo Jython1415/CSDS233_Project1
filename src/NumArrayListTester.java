@@ -406,6 +406,16 @@ public class NumArrayListTester {
      */
     @Test
     public void testToString() {
+        // test on an empty array
+        NumArrayList list1 = new NumArrayList();
+        Assert.assertEquals("The method did not return an empty string", "", list1.toString());
 
+        // test on an array with one element
+        list1.add(0.0);
+        Assert.assertEquals("The method did not return the correct string", "0.0", list1.toString());
+
+        // test on an array with multiple elements
+        list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
+        Assert.assertEquals("The method did not return the correct string", "0.0 1.0 2.0 3.0 4.0", list1.toString());
     }
 }
