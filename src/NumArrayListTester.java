@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import org.junit.Assert;
 import org.junit.Test;
 import java.lang.NoSuchFieldException;
@@ -27,7 +28,9 @@ public class NumArrayListTester {
      * @throws NoSuchMethodException passes along exception from reflection
      */
     private static boolean compareNumArrayListToArray(NumArrayList list1, double[] array) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        double[] arrayList = (double[])(list1.getClass().getMethod("getInternalArray", null).invoke(list1, null));
+        Method getInternalArray = list1.getClass().getDeclaredMethod("getInternalArray", null);
+        getInternalArray.setAccessible(true);
+        double[] arrayList = (double[])(getInternalArray.invoke(list1, null));
         for (int i = 0; i < list1.size(); i++) {
             if (arrayList[i] != array[i]) {
                 return false;
