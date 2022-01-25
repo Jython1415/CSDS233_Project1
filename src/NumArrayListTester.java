@@ -362,7 +362,43 @@ public class NumArrayListTester {
      */
     @Test
     public void testRemoveDuplicates() {
+        // empty list
+        NumArrayList list1 = new NumArrayList();
+        list1.removeDuplicates();
+        Assert.assertTrue("The capacity of the list should be 0", list1.capacity() == 0);
+        Assert.assertTrue("The size of the list should be 0", list1.size() == 0);
 
+        // list with one element
+        list1.add(0.0);
+        list1.removeDuplicates();
+        Assert.assertTrue("The capacity of the list should be 1", list1.capacity() == 1);
+        Assert.assertTrue("The size of the list should be 1", list1.size() == 1);
+        Assert.assertTrue("The 1st element in the list should be 0.0", list1.lookup(0) == 0.0);
+
+        // list with multiple elements but no duplicates
+        list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 3.0, 4.0);
+        list1.removeDuplicates();
+        NumArrayListTester.assertNumArrayListEquals("The contents of the array were altered when they shouldn't have been",
+                                                    list1, new double[]{0.0, 1.0, 2.0, 3.0, 4.0});
+
+        /* a list with multiple duplicates at various locations */
+        // a list with adjacent duplicates
+        list1 = NumArrayListTester.createArrayList(0.0, 0.0, 1.0, 1.0, 2.0);
+        list1.removeDuplicates();
+        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+                                                    list1, new double[]{0.0, 1.0, 2.0});
+
+        // a list with duplicates at the ends
+        list1 = NumArrayListTester.createArrayList(0.0, 1.0, 2.0, 1.0, 0.0);
+        list1.removeDuplicates();
+        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+                                                    list1, new double[]{0.0, 1.0, 2.0});
+
+        // a list with elements that are all the same value
+        list1 = NumArrayListTester.createArrayList(0.0, 0.0, 0.0, 0.0, 0.0);
+        list1.removeDuplicates();
+        NumArrayListTester.assertNumArrayListEquals("The method did not remove the duplicates correctly",
+                                                    list1, new double[]{0.0});
     }
 
     /**
