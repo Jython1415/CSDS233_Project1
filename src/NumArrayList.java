@@ -163,7 +163,14 @@ public class NumArrayList implements NumList {
      * Removes duplicates in this array while preserving the current order of the numbers
      */
     public void removeDuplicates() {
-
+        for (int i = 0; i < size(); i++) {
+            for (int j = size() - 1; j > i; j--) {
+                if (getInternalArray()[i] == getInternalArray()[j]) {
+                    this.remove(j);
+                    size--;
+                }
+            }
+        }
     }
 
     /**
