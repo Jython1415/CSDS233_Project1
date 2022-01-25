@@ -217,6 +217,195 @@ public class NumArrayList implements NumList {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        String indent = "    ";
+        String newLine = "\n";
+
+        System.out.println("*** Demonstration for the NumArrayList class ***" + newLine);
+    
+        System.out.println("Methods:" + newLine +
+                           indent + "NumArrayList(); // constructor for an empty list with 0 capacity" + newLine +
+                           indent + "NumArrayList(capacity); // constructor for an empty list with set capacity" + newLine +
+                           indent + "list.size(); // returns the size, the number of elements in the list" + newLine + 
+                           indent + "list.capacity(); // returns the capacity, the number of elements the list can store without expanding" + newLine +
+                           indent + "list.add(value); // adds the value to the end of the list" + newLine +
+                           indent + "list.insert(index, value); // adds the value to the list at the specified index" + newLine +
+                           indent + "list.remove(index); // removes the value stored at the specified index" + newLine +
+                           indent + "list.contains(value); // returns whether the list contains the value or not" + newLine +
+                           indent + "list.lookup(index); // returns the value stored at the index" + newLine +
+                           indent + "list.equals(anotherList); // returns whether the two lists store the exact same values in the same order or not" + newLine +
+                           indent + "list.removeDuplicates(); // removes duplicate values in the list" + newLine +
+                           indent + "list.toString(); // returns the values in the list separated by spaces" + newLine);
+        
+        System.out.println("Demonstration for NumArrayList(), size(), capacity(), add(value), and toString()");
+        System.out.println("--- Code ---");
+        System.out.println("NumArrayList list = new NumArrayList();" + newLine +
+                           "System.out.println(list.size());" + newLine +
+                           "System.out.println(list.capacity());" + newLine +
+                           newLine +
+                           "list.add(0.0);" + newLine +
+                           "list.add(1.0);" + newLine +
+                           "System.out.println(list.size());" + newLine +
+                           "System.out.println(list.capacity());" + newLine +
+                           "System.out.println(list.toString());" + newLine);
+        System.out.println("-- Output --");
+
+        NumArrayList list = new NumArrayList();
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+        
+        list.add(0.0);
+        list.add(1.0);
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+        System.out.println(list.toString());
+
+        System.out.println(""); // new line
+
+        System.out.println("Demonstration for NumArrayList(capacity), insert(index, value), remove(index), contains(value), lookup(index)");
+        System.out.println("--- Code ---");
+        System.out.println("NumArrayList list = new NumArrayList(4);" + newLine +
+                           "System.out.println(list.size());" + newLine +
+                           "System.out.println(list.capacity());" + newLine +
+                           newLine +
+                           "list.insert(0, 3.0);" + newLine +
+                           "list.insert(0, 1.0);" + newLine +
+                           "list.insert(0, 0.0);" + newLine +
+                           "list.insert(2, 2.0);" + newLine +
+                           "list.insert(2, 2.0);" + newLine +
+                           newLine +
+                           "System.out.println(list.toString());" + newLine +
+                           newLine +
+                           "System.out.println(list.lookup(3));" + newLine +
+                           "list.remove(3);" + newLine +
+                           "System.out.println(list.lookup(3));" + newLine +
+                           "System.out.println(list.toString());" + newLine +
+                           newLine +
+                           "System.out.println(list.contains(0.0));" + newLine +
+                           "System.out.println(list.contains(0.5));" + newLine);
+        System.out.println("-- Output --");
+
+        list = new NumArrayList(4);
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+
+        list.insert(0, 3.0);
+        list.insert(0, 1.0);
+        list.insert(0, 0.0);
+        list.insert(2, 2.0);
+        list.insert(2, 2.0);
+
+        System.out.println(list.toString());
+
+        System.out.println(list.lookup(3));
+        list.remove(3);
+        System.out.println(list.lookup(3));
+        System.out.println(list.toString());
+
+        System.out.println(list.contains(0.0));
+        System.out.println(list.contains(0.5));
+        /*
+        *** Demonstration for the NumArrayList class ***
+
+        Methods:
+            NumArrayList(); // constructor for an empty list with 0 capacity
+            NumArrayList(capacity); // constructor for an empty list with set capacity
+            list.size(); // returns the size, the number of elements in the list
+            list.capacity(); // returns the capacity, the number of elements the list can store without expanding
+            list.add(value); // adds the value to the end of the list
+            list.insert(index, value); // adds the value to the list at the specified index
+            list.remove(index); // removes the value stored at the specified index
+            list.contains(value); // returns whether the list contains the value or not
+            list.lookup(index); // returns the value stored at the index
+            list.equals(anotherList); // returns whether the two lists store the exact same values in the same order or not
+            list.removeDuplicates(); // removes duplicate values in the list
+            list.toString(); // returns the values in the list separated by spaces
+
+        Demonstration for NumArrayList(), size(), capacity(), add(value), and toString()
+        --- Code ---
+        NumArrayList list = new NumArrayList();
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+        
+        list.add(0.0);
+        list.add(1.0);
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+        System.out.println(list.toString());
+
+        -- Output --
+        0
+        0
+        2
+        2
+        0.0 1.0
+
+        Demonstration for NumArrayList(capacity), insert(index, value), remove(index), contains(value), lookup(index)
+        --- Code ---
+        NumArrayList list = new NumArrayList(4);
+        System.out.println(list.size());
+        System.out.println(list.capacity());
+
+        list.insert(0, 3.0);
+        list.insert(0, 1.0);
+        list.insert(0, 0.0);
+        list.insert(2, 2.0);
+        list.insert(2, 2.0);
+
+        System.out.println(list.toString());
+
+        System.out.println(list.lookup(3));
+        list.remove(3);
+        System.out.println(list.lookup(3));
+        System.out.println(list.toString());
+
+        System.out.println(list.contains(0.0));
+        System.out.println(list.contains(0.5));
+
+        -- Output --
+        0
+        4
+        0.0 1.0 2.0 2.0 3.0
+        2.0
+        3.0
+        0.0 1.0 2.0 3.0
+        true
+        false
+
+        Demonstration for equals(anotherList) and removeDuplicates()
+        --- Code ---
+        NumArrayList list = new NumArrayList();
+        list.add(0.0);
+        list.add(1.0);
+        list.add(2.0);
+        list.add(1.0);
+        list.add(2.0);
+        list.add(3.0);
+
+        System.out.println(list.toString());
+
+        // Copying the list
+        NumArrayList listCopy = new NumArrayList();
+        listCopy.add(0.0);
+        listCopy.add(1.0);
+        listCopy.add(2.0);
+        listCopy.add(1.0);
+        listCopy.add(2.0);
+        listCopy.add(3.0);
+
+        System.out.println(list.equals(listCopy));
+
+        list.removeDuplicates();
+
+        System.out.println(list.toString());
+        System.out.println(listCopy.toString());
+        System.out.println(list.equals(listCopy));
+
+        -- Output --
+        0.0 1.0 2.0 1.0 2.0 3.0
+        true
+        0.0 1.0 2.0 3.0
+        0.0 1.0 2.0 1.0 2.0 3.0
+        false
+        */
     }
 }
