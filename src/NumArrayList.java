@@ -167,7 +167,6 @@ public class NumArrayList implements NumList {
             for (int j = size() - 1; j > i; j--) {
                 if (getInternalArray()[i] == getInternalArray()[j]) {
                     this.remove(j);
-                    size--;
                 }
             }
         }
