@@ -364,7 +364,7 @@ public class NumArrayList implements NumList {
 
         System.out.println(""); // new line
 
-        System.out.println("*** Demonstration Complete ***");
+        System.out.println("*** Demonstration Complete ***" + newLine);
 
         /*
         *** Demonstration for the NumArrayList class ***
