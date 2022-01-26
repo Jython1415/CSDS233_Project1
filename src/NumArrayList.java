@@ -220,7 +220,7 @@ public class NumArrayList implements NumList {
         String indent = "    ";
         String newLine = "\n";
 
-        System.out.println("*** Demonstration for the NumArrayList class ***" + newLine);
+        System.out.println(newLine + "*** Demonstration for the NumArrayList class ***" + newLine);
     
         System.out.println("Methods:" + newLine +
                            indent + "NumArrayList(); // constructor for an empty list with 0 capacity" + newLine +
@@ -303,6 +303,70 @@ public class NumArrayList implements NumList {
 
         System.out.println(list.contains(0.0));
         System.out.println(list.contains(0.5));
+
+        System.out.println(""); // new line
+
+        System.out.println("Demonstration for equals(anotherList) and removeDuplicates()");
+        System.out.println("--- Code ---");
+        System.out.println("NumArrayList list = new NumArrayList();" + newLine +
+                           "list.add(0.0);" + newLine +
+                           "list.add(1.0);" + newLine +
+                           "list.add(2.0);" + newLine +
+                           "list.add(1.0);" + newLine +
+                           "list.add(2.0);" + newLine +
+                           "list.add(3.0);" + newLine +
+                           newLine +
+                           "System.out.println(list.toString());" + newLine +
+                           newLine +
+                           "// Copying the list" + newLine +
+                           "NumArrayList listCopy = new NumArrayList();" + newLine +
+                           "listCopy.add(0.0);" + newLine +
+                           "listCopy.add(1.0);" + newLine +
+                           "listCopy.add(2.0);" + newLine +
+                           "listCopy.add(1.0);" + newLine +
+                           "listCopy.add(2.0);" + newLine +
+                           "listCopy.add(3.0);" + newLine +
+                           newLine +
+                           "System.out.println(list.equals(listCopy));" + newLine +
+                           newLine +
+                           "list.removeDuplicates();" + newLine +
+                           newLine +
+                           "System.out.println(list.toString());" + newLine +
+                           "System.out.println(listCopy.toString());" + newLine +
+                           "System.out.println(list.equals(listCopy));" + newLine);
+        System.out.println("-- Output --");
+
+        list = new NumArrayList();
+        list.add(0.0);
+        list.add(1.0);
+        list.add(2.0);
+        list.add(1.0);
+        list.add(2.0);
+        list.add(3.0);
+
+        System.out.println(list.toString());
+
+        // Copying the list
+        NumArrayList listCopy = new NumArrayList();
+        listCopy.add(0.0);
+        listCopy.add(1.0);
+        listCopy.add(2.0);
+        listCopy.add(1.0);
+        listCopy.add(2.0);
+        listCopy.add(3.0);
+
+        System.out.println(list.equals(listCopy));
+
+        list.removeDuplicates();
+
+        System.out.println(list.toString());
+        System.out.println(listCopy.toString());
+        System.out.println(list.equals(listCopy));
+
+        System.out.println(""); // new line
+
+        System.out.println("*** Demonstration Complete ***");
+
         /*
         *** Demonstration for the NumArrayList class ***
 
@@ -370,7 +434,7 @@ public class NumArrayList implements NumList {
         0.0 1.0 2.0 3.0
         true
         false
-
+        
         Demonstration for equals(anotherList) and removeDuplicates()
         --- Code ---
         NumArrayList list = new NumArrayList();
@@ -406,6 +470,8 @@ public class NumArrayList implements NumList {
         0.0 1.0 2.0 3.0
         0.0 1.0 2.0 1.0 2.0 3.0
         false
+
+        *** Demonstration Complete ***
         */
     }
 }
