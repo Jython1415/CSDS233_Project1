@@ -1,9 +1,7 @@
 import java.lang.reflect.Method;
 import org.junit.Assert;
 import org.junit.Test;
-import java.lang.NoSuchFieldException;
 import java.lang.reflect.InvocationTargetException;
-
 public class NumArrayListTester {
     /**
      * Creates a NumArrayList with the specified double values
