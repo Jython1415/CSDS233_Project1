@@ -78,12 +78,12 @@ public class NumArrayList implements NumList {
      */
     public void insert(int i, double value) {
         if (size () == capacity()) {
-            this.increaseCapacity();
+            increaseCapacity();
         }
         
         /* If the insertion is beyond the current size, just append the value */
         if (i >= size()) {
-            this.add(value);
+            add(value);
         }
         /* Shifts elements over to provide space for the insertion */
         else {
@@ -150,13 +150,13 @@ public class NumArrayList implements NumList {
      * @return true if the two are equal, false otherwise
      */
     public boolean equals(NumList otherList) {
-        if (this.size() != otherList.size()) {
+        if (size() != otherList.size()) {
             return false;
         }
         else {
             /* Iterates through both lists to compare the elements individually */
-            for (int i = 0; i < this.size(); i++) {
-                if (this.lookup(i) != otherList.lookup(i)) {
+            for (int i = 0; i < size(); i++) {
+                if (lookup(i) != otherList.lookup(i)) {
                     return false;
                 }
             }
@@ -175,7 +175,7 @@ public class NumArrayList implements NumList {
             /* Index goes from the end back to the first index to remove duplicates of the current element*/
             for (int j = size() - 1; j > i; j--) {
                 if (lookup(i) == lookup(j)) {
-                    this.remove(j);
+                    remove(j);
                 }
             }
         }
@@ -191,11 +191,11 @@ public class NumArrayList implements NumList {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < size() - 1; i++) {
-            result.append(this.lookup(i)).append(" ");
+            result.append(lookup(i)).append(" ");
         }
 
         if (size() != 0) {
-            result.append(this.lookup(size() - 1));
+            result.append(lookup(size() - 1));
         }
 
         return result.toString();
