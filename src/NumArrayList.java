@@ -1,6 +1,7 @@
 public class NumArrayList implements NumList {
     /* internalArray is for storing the values in the NumArrayList */
     private double[] internalArray = null;
+    /* size keeps track of how many elements are stored in the list */
     private int size = 0;
 
     /**
@@ -80,9 +81,11 @@ public class NumArrayList implements NumList {
             this.increaseCapacity();
         }
         
+        /* If the insertion is beyond the current size, just append the value */
         if (i >= size()) {
             this.add(value);
         }
+        /* Shifts elements over to provide space for the insertion */
         else {
             for (int j = size(); j > i; j--) {
                 getInternalArray()[j] = getInternalArray()[j - 1];
@@ -101,6 +104,7 @@ public class NumArrayList implements NumList {
      */
     public void remove(int i) {
         if (i < size()) {
+            /* Shifts elements over until the element to be removed is covered up */
             for (int j = i; j < size() - 1; j++) {
                 getInternalArray()[j] = lookup(j + 1);
             }
@@ -115,6 +119,7 @@ public class NumArrayList implements NumList {
      * @return true if the value is in the array, false otherwise
      */
     public boolean contains(double value) {
+        /* Linear search for the element */
         for (double element : getInternalArray()) {
             if (element == value) {
                 return true;
@@ -149,6 +154,7 @@ public class NumArrayList implements NumList {
             return false;
         }
         else {
+            /* Iterates through both lists to compare the elements individually */
             for (int i = 0; i < this.size(); i++) {
                 if (this.lookup(i) != otherList.lookup(i)) {
                     return false;
@@ -161,9 +167,12 @@ public class NumArrayList implements NumList {
 
     /**
      * Removes duplicates in this array while preserving the current order of the numbers
+     * Time complexity is strictly less than O(N^2)
      */
     public void removeDuplicates() {
+        /* Index goes from start to finish */
         for (int i = 0; i < size(); i++) {
+            /* Index goes from the end back to the first index to remove duplicates of the current element*/
             for (int j = size() - 1; j > i; j--) {
                 if (lookup(i) == lookup(j)) {
                     this.remove(j);
@@ -210,7 +219,8 @@ public class NumArrayList implements NumList {
      * Doubles the capacity
      */
     private void increaseCapacity() {
-        double[] tempArray = new double[Math.max(1, getInternalArray().length * 2)];
+        /* Creates an array with double capacity or 1 if the current capacity is 0 */
+        double[] tempArray = new double[Math.max(1, capacity() * 2)];
         NumArrayList.copyArray(tempArray, getInternalArray());
         setInternalArray(tempArray);
     }
